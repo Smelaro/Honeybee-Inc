@@ -1,0 +1,27 @@
+{% extends "ingresado.html" %}
+
+{% block title %}Productos mas vendidos{% endblock %}
+
+{% block page_content %}
+<style>
+table#t01 { font-family: arial, sans-serif; border-collapse: collapse; width: 100%; }
+td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+tr:nth-child(even) { background-color: #dddddd; }
+</style>
+	<h1>Los {{ cant }} productos mas vendidos:</h1>
+	<table id="t01">
+		<tr>
+			<th>Producto</th>
+			<th>Cantidad Vendidos</th>
+		</tr>
+		<tr>
+			{% for item in lista %}
+				<tr>
+					{% for i in item %}
+						<td>{{ i }}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tr>
+	</table>
+{% endblock %}

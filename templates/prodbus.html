@@ -1,0 +1,32 @@
+{% extends "ingresado.html" %}
+
+{% block title %}Productos{% endblock %}
+
+{% block page_content %}
+<style>
+table#t01 { font-family: arial, sans-serif; border-collapse: collapse; width: 100%; }
+td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+tr:nth-child(even) { background-color: #dddddd; }
+</style>
+	<h1>Ingrese el nombre del producto:</h1>
+	<form action="http://127.0.0.1:5000/productos" method="POST">
+	<p><input type='text' name='nombreprod'></p>
+	<input type='submit' name='submit'>
+	{% if error == 1 %}
+		<h2>Ingrese mas de 3 caracteres.</h2>
+	{% endif %}
+	{% if lista == 0 %}
+		<h2>No se encontro ningun resultado.</h2>
+	{% endif %}
+	{% if lista == 1 %}
+		<h2>Se encontro mas de un producto con la informacion ingresada:
+			<table id='t01'>
+			{% for producto in producto|sort %}
+				<tr>
+				<td><a href="/prodtabla/{{ producto }}">{{ producto }}</a></td>
+				</tr>
+			{% endfor %}
+			</table>
+			{% endif %}</h2>
+		</form>
+{% endblock %}

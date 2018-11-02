@@ -1,0 +1,30 @@
+{% extends "ingresado.html" %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block page_content %}
+<style>
+table#t01 { font-family: arial, sans-serif; border-collapse: collapse; width: 100%; }
+td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+tr:nth-child(even) { background-color: #dddddd; }
+</style>
+	<h1>{{ cliente}}</h1>
+	<table id="t01">
+		<tr>
+			{% for tit in titulo %}
+				<th>{{ tit }}</th>
+			{% endfor %}
+		</tr>
+		{% for item in tabla|reverse() %}
+			<tr>
+			{% for dentro in item %}
+				<td>{{ dentro }}</td>
+			{% endfor %}
+			</tr>
+		{% endfor %}
+	</table>
+	<h3>El cliente gasto en total ${{ gasto }}</h3>
+	<form>
+	<a href='/clienbus' class="btn btn-info">Volver</a>
+</form>
+{% endblock %}

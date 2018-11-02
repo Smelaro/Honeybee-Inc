@@ -1,0 +1,40 @@
+{% extends "ingresado.html" %}
+
+{% block title %}Ultimas Ventas{% endblock %}
+
+{% block page_content %}
+    <style>
+table#t01 {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<div class="page-header">    
+    <h2>Te presento las ultimas ventas realizadas:</h2>
+    <table id="t01">
+        <tr>
+            {% for tit in titulo %}
+                <th>{{ tit }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in tabla|reverse() %}
+            <tr>
+                {% for dentro in item %}
+                    <td>{{ dentro }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+</div>
+{% endblock %}
