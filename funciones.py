@@ -100,8 +100,8 @@ def mostrar(campo, filtro):
 		elif campo == "CLIENTE":
 			for precio in range(len(tabla)):
 				cant = cant + (float(tabla[precio]["PRECIO"])*int(tabla[precio]["CANTIDAD"]))
+			cant = "%.2f" % cant
 
-		cant = "%.2f" % cant
 		return tablafinal, tablaorden, cant, nombre
 
 def mejores(campo):
